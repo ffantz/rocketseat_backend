@@ -1,14 +1,13 @@
 const express = require('express');
-// import express from 'express';   ES6 module
 
-// Initialize Express
+// Use the dot symbol to specify that you aren't importing any extern lib, but a local module
+const routes = require('./routes');
+
 const app = express();
 
-// Listen to a route (request, response)
-app.get('/', (req, res) => {                    // Methods: GET, POST, PUT, DELETE
-    return res.json({'message':'Hello World'}); // JSON response
-    // return res.send('Hello World');          // Basic response (text)
-});
+app.use(express.json());
 
-// Listen to a port
+// Use after the JSON Express
+app.use(routes);
+
 app.listen(3333);
