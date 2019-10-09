@@ -2,6 +2,7 @@ const express = require('express');
 
 // Lib to manipulate mongoDB
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 // Use the dot symbol to specify that you aren't importing any extern lib, but a local module
 const routes = require('./routes');
@@ -13,6 +14,7 @@ mongoose.connect('mongodb+srv://ffantz:fantz123@omnistack-df8j9.mongodb.net/omni
     useUnifiedTopology: true
 });
 
+app.use(cors());
 app.use(express.json());
 
 // Use after the JSON Express
