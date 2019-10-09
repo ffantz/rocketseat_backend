@@ -4,6 +4,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
+const path = require('path');
+
 // Use the dot symbol to specify that you aren't importing any extern lib, but a local module
 const routes = require('./routes');
 
@@ -16,8 +18,7 @@ mongoose.connect('mongodb+srv://ffantz:fantz123@omnistack-df8j9.mongodb.net/omni
 
 app.use(cors());
 app.use(express.json());
-
-// Use after the JSON Express
+app.use('/files', express.static(path.resolve(__dirname, '..','uploads')));
 app.use(routes);
 
 app.listen(3333);
